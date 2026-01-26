@@ -1,0 +1,11 @@
+namespace CallbackArchitecture
+{
+    public class PatrolCondition03 : PatrolCondition
+    {
+        public override void Init()
+        {
+            base.Init();
+            id = (int)PatrolConditionId.PatrolCondition03;
+        }
+    }
+}
