@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
+
 namespace CallbackArchitecture
 {
     public class HorrorEvent : ObjectBase
     {
         protected int id = (int)HorrorEventId.None;
+        private Action<int> onHorrorEventCleared = null;
 
-        public virtual void Init()
+        public virtual void Init(Action<int> _onHorrorEventCleared)
         {
-
+            onHorrorEventCleared = _onHorrorEventCleared;
         }
 
         public int GetId()
@@ -18,11 +21,15 @@ namespace CallbackArchitecture
         public virtual void OnHorrorEventTriggered()
         {
             Debug.Log($"OnHorrorEventTriggered::{this.transform.name}");
+
+            //일단 조건 없이 바로 클리어
+            OnHorrorEventCleared();
         }
 
         public virtual void OnHorrorEventCleared()
         {
             Debug.Log($"OnHorrorEventCleared::{this.transform.name}");
+            onHorrorEventCleared?.Invoke(id);
         }
     }
 

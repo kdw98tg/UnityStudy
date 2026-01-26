@@ -21,7 +21,7 @@ namespace CallbackArchitecture
 
             foreach (var horrorEvent in horrorEventArray)
             {
-                horrorEvent.Init();
+                horrorEvent.Init(OnHorrorEventCleaerd);
             }
 
             horrorEventDictionary = horrorEventArray.ToDictionary(horrorEvent => horrorEvent.GetId(), horrorEvent => horrorEvent);
@@ -31,8 +31,8 @@ namespace CallbackArchitecture
         {
             nextPatrolDictionary = new Dictionary<int, PatrolFlow>
             {
-                { (int)HorrorEventId.HorrorEvent01, new PatrolFlow() { NextPatrolId = 2, NextPatrolConditionId = 2 } },
-                { (int)HorrorEventId.HorrorEvent02, new PatrolFlow() { NextPatrolId = 3, NextPatrolConditionId = 3 } }
+                { (int)HorrorEventId.HorrorEvent01, new PatrolFlow() { NextPatrolId = (int)PatrolId.Patrol02, NextPatrolConditionId = (int)PatrolConditionId.PatrolCondition02 } },
+                { (int)HorrorEventId.HorrorEvent02, new PatrolFlow() { NextPatrolId = (int)PatrolId.Patrol03, NextPatrolConditionId = (int)PatrolConditionId.PatrolCondition03 } }
             };
         }
 

@@ -7,5 +7,11 @@ namespace CallbackArchitecture
             base.Init();
             id = (int)PatrolConditionId.PatrolCondition03;
         }
+
+        public override void UpdateProgress(int horrorEventId)
+        {
+            base.UpdateProgress(horrorEventId);
+            OnPatrolConditionCompleted();
+        }
     }
 }

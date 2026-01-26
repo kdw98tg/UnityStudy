@@ -15,7 +15,7 @@ namespace CallbackArchitecture
             base.ExecutePatrolAction();
 
             //여기서 HorrorEvent 트리거
-            onHorrorEventTrigger?.Invoke((int)HorrorEventId.HorrorEvent01);
+            onHorrorEventTrigger?.Invoke((int)HorrorEventId.HorrorEvent03);
         }
     }
 }

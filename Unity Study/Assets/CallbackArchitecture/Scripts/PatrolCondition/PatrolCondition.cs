@@ -8,6 +8,7 @@ namespace CallbackArchitecture
         protected int id = (int)PatrolConditionId.None;
 
         protected bool isCleared = false;
+        
         public virtual void Init()
         {
 

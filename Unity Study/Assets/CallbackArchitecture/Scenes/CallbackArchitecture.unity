@@ -381,6 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868010800}
+  - component: {fileID: 868010801}
   m_Layer: 0
   m_Name: PatrolManager
   m_TagString: Untagged
@@ -406,6 +407,18 @@ Transform:
   - {fileID: 1567817246}
   m_Father: {fileID: 1068267878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &868010801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868010799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7fd41e304d5fd4b90a866a9cbb7e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &932007209
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068267878}
+  - component: {fileID: 1068267879}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -475,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 1068267877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.952595, y: 4.802545, z: 3.4721098}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -484,6 +498,18 @@ Transform:
   - {fileID: 1807121901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068267879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068267877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1dadf6a9e3a4124ea7f29a904e2a8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074235988
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1074235989}
+  - component: {fileID: 1074235990}
   m_Layer: 0
   m_Name: PatrolCondtionManager
   m_TagString: Untagged
@@ -518,6 +545,18 @@ Transform:
   - {fileID: 1787751630}
   m_Father: {fileID: 1068267878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1074235990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074235988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63693c3f0713caf46b56667e03e0ce3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1161765950
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1807121901}
+  - component: {fileID: 1807121902}
   m_Layer: 0
   m_Name: HorrorEventManager
   m_TagString: Untagged
@@ -864,6 +904,18 @@ Transform:
   - {fileID: 336770419}
   m_Father: {fileID: 1068267878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1807121902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807121900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25dde1b5c9a9fd40bd6f396f7c1b0c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
