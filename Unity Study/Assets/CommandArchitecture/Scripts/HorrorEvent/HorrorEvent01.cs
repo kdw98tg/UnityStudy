@@ -5,9 +5,9 @@ namespace CommandArchitecture
 {
     public class HorrorEvent01 : HorrorEvent
     {
-        public override void Init(Action<int> _onHorrorEventCleared)
+        public override void Init()
         {
-            base.Init(_onHorrorEventCleared);
+            base.Init();
             id = (int)HorrorEventId.HorrorEvent01;
         }
     }

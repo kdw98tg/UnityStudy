@@ -6,11 +6,10 @@ namespace CommandArchitecture
     public class HorrorEvent : ObjectBase
     {
         protected int id = (int)HorrorEventId.None;
-        private Action<int> onHorrorEventCleared = null;
 
-        public virtual void Init(Action<int> _onHorrorEventCleared)
+        public virtual void Init()
         {
-            onHorrorEventCleared = _onHorrorEventCleared;
+
         }
 
         public int GetId()
@@ -29,7 +28,11 @@ namespace CommandArchitecture
         public virtual void OnHorrorEventCleared()
         {
             Debug.Log($"OnHorrorEventCleared::{this.transform.name}");
-            onHorrorEventCleared?.Invoke(id);
+
+            CommandInvoker<OnHorrorEventClearedParam>.Execute(new OnHorrorEventClearedParam()
+            {
+                HorrorEventId = id,
+            });
         }
     }
 

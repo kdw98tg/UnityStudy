@@ -8,15 +8,12 @@ namespace CallbackArchitecture
     {
         private Action<int> onPatrolInteracted = null;
         private Action<int> onHorrorEventTrigger = null;
-        
+
         private Dictionary<int, Patrol> patrolDictionary = null;
 
 
-        public void Init(Action<int> _onPatrolInteracted, Action<int> _onHorrorEventTrigger)
+        public void Init()
         {
-            onPatrolInteracted = _onPatrolInteracted;
-            onHorrorEventTrigger = _onHorrorEventTrigger;
-
             Patrol[] patrolArray = GetComponentsInChildren<Patrol>();
 
             foreach (var patrol in patrolArray)

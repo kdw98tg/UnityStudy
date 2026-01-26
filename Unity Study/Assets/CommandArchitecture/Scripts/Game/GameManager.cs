@@ -24,15 +24,14 @@ namespace CommandArchitecture
 
         private void Start()
         {
-            patrolManager.Init(OnPatrolInteracted);
+            patrolManager.Init();
             patrolConditionManager.Init();
-            horrorEventManager.Init(OnHorrorEventCleared);
+            horrorEventManager.Init();
 
             //제일 처음 Patrol을 가능하게 하기 위한 코드
             patrolConditionManager.UpdatePatrolCondition(1, 0);
 
             InitCommands();
-            CommandInvoker<OnHorrorEventTriggerParam>.Execute(new OnHorrorEventTriggerParam() { });
         }
 
         //TEMP 
@@ -51,36 +50,40 @@ namespace CommandArchitecture
 
         private void InitCommands()
         {
+            //HorrorEvent
             CommandInvoker<OnHorrorEventTriggerParam>.Add(new GameCommand_OnHorrorEventTrigger(OnHorrorEventTrigger));
+            CommandInvoker<OnHorrorEventClearedParam>.Add(new GameCommand_OnHorrorEventClearedParam(OnHorrorEventCleared));
+
+            //Patrol
+            CommandInvoker<OnPatrolInteractedParam>.Add(new GameCommand_OnPatrolInteracted(OnPatrolInteracted));
         }
 
         //패트롤이 찍힐 때 호출
-        private void OnPatrolInteracted(int _id)
+        private void OnPatrolInteracted(OnPatrolInteractedParam _param)
         {
             //patrolCondition 에서 조건이 완료 되었다면 패트롤의 행동을 수행
             //patrolCondition 에서 조건이 완료되지 않았다면, 패트롤이 거부될때의 행동을 수행
-            if (patrolConditionManager.HasPatrolConditionCompleted(_id))
+            if (patrolConditionManager.HasPatrolConditionCompleted(_param.PatrolId))
             {
-                patrolManager.ExecutePatrolAction(_id);
+                patrolManager.ExecutePatrolAction(_param.PatrolId);
             }
             else
             {
-                patrolManager.OnPatrolAccessDenied(_id);
+                patrolManager.OnPatrolAccessDenied(_param.PatrolId);
             }
         }
 
         //호러 이벤트가 트리거 될 때, 호출
         private void OnHorrorEventTrigger(OnHorrorEventTriggerParam _param)
         {
-            Debug.Log("123");
-            horrorEventManager.OnHorrorEventTrigger(_param.Id);
+            horrorEventManager.OnHorrorEventTrigger(_param.HorrorEventId);
         }
 
         //호러 이벤트가 끝났을 때, 처리
-        private void OnHorrorEventCleared(int _horrorEventId)
+        private void OnHorrorEventCleared(OnHorrorEventClearedParam _param)
         {
-            PatrolFlow patrolFlow = horrorEventManager.GetNextPatrolFlow(_horrorEventId);
-            patrolConditionManager.UpdatePatrolCondition(patrolFlow.NextPatrolConditionId, _horrorEventId);
+            PatrolFlow patrolFlow = horrorEventManager.GetNextPatrolFlow(_param.HorrorEventId);
+            patrolConditionManager.UpdatePatrolCondition(patrolFlow.NextPatrolConditionId, _param.HorrorEventId);
         }
     }
 }

@@ -4,9 +4,9 @@ namespace CommandArchitecture
 {
     public class Patrol02 : Patrol
     {
-        public override void Init(Action<int> _onPatrolInteracted, Action<int> _onHorrorEventTrigger)
+        public override void Init()
         {
-            base.Init(_onPatrolInteracted, _onHorrorEventTrigger);
+            base.Init();
             id = (int)PatrolId.Patrol02;
         }
 
@@ -15,7 +15,10 @@ namespace CommandArchitecture
             base.ExecutePatrolAction();
 
             //여기서 HorrorEvent 트리거
-            onHorrorEventTrigger?.Invoke((int)HorrorEventId.HorrorEvent02);
+            CommandInvoker<OnHorrorEventTriggerParam>.Execute(new OnHorrorEventTriggerParam()
+            {
+                HorrorEventId = (int)HorrorEventId.HorrorEvent02,
+            });
         }
     }
 }

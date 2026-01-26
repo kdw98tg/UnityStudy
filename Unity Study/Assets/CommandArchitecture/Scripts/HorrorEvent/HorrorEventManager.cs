@@ -9,11 +9,9 @@ namespace CommandArchitecture
     {
         private Dictionary<int, HorrorEvent> horrorEventDictionary = null;
         private Dictionary<int, PatrolFlow> nextPatrolDictionary = null;
-        private Action<int> onHorrorEventCleared = null;
 
-        public void Init(Action<int> _onHorrorEventCleared)
+        public void Init()
         {
-            onHorrorEventCleared = _onHorrorEventCleared;
 
             InitPatrolFlowDictionary();
 
@@ -21,7 +19,7 @@ namespace CommandArchitecture
 
             foreach (var horrorEvent in horrorEventArray)
             {
-                horrorEvent.Init(OnHorrorEventCleaerd);
+                horrorEvent.Init();
             }
 
             horrorEventDictionary = horrorEventArray.ToDictionary(horrorEvent => horrorEvent.GetId(), horrorEvent => horrorEvent);
@@ -55,7 +53,10 @@ namespace CommandArchitecture
 
         public void OnHorrorEventCleaerd(int _id)
         {
-            onHorrorEventCleared?.Invoke(_id);
+            if (horrorEventDictionary.ContainsKey(_id))
+            {
+                horrorEventDictionary[_id].OnHorrorEventCleared();
+            }
         }
     }
 }

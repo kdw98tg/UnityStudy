@@ -8,17 +8,11 @@ namespace CommandArchitecture
     {
         protected int id = (int)PatrolId.None;
 
-        private Action<int> onPatrolInteracted = null;
-        private Action onPatrolDenied = null;
-        private Action onExecutePatrolAction = null;
-
         //호러 이벤트를 트리거 해주는 콜백
         protected Action<int> onHorrorEventTrigger = null;
 
-        public virtual void Init(Action<int> _onPatrolInteracted, Action<int> _onHorrorEventTrigger)
+        public virtual void Init()
         {
-            onPatrolInteracted = _onPatrolInteracted;
-            onHorrorEventTrigger = _onHorrorEventTrigger;
         }
 
         public int GetId()
@@ -32,7 +26,11 @@ namespace CommandArchitecture
         public virtual void OnPatrolInteracted()
         {
             Debug.Log($"OnPatrolInteracted::{this.transform.name}");
-            onPatrolInteracted?.Invoke(id);
+            
+            CommandInvoker<OnPatrolInteractedParam>.Execute(new OnPatrolInteractedParam()
+            {
+                PatrolId = id,
+            });
         }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace CommandArchitecture
         public virtual void OnPatrolDenied()
         {
             Debug.Log($"OnPatrolDenied::{this.transform.name}");
-            onPatrolDenied?.Invoke();
         }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace CommandArchitecture
         public virtual void ExecutePatrolAction()
         {
             Debug.Log($"ExecutePatrolAction::{this.transform.name}");
-            onExecutePatrolAction?.Invoke();
         }
     }
 

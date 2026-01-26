@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CommandArchitecture;
 using UnityEngine;
 
 namespace CallbackArchitecture
@@ -26,7 +27,7 @@ namespace CallbackArchitecture
 
         private void Start()
         {
-            patrolManager.Init(OnPatrolInteracted, OnHorrorEventTrigger);
+            patrolManager.Init();
             patrolConditionManager.Init();
             horrorEventManager.Init(OnHorrorEventCleared);
 
@@ -64,9 +65,9 @@ namespace CallbackArchitecture
         }
 
         //호러 이벤트가 트리거 될 때, 호출
-        private void OnHorrorEventTrigger(int _id)
+        private void OnHorrorEventTrigger(OnHorrorEventTriggerParam _param)
         {
-            horrorEventManager.OnHorrorEventTrigger(_id);
+            horrorEventManager.OnHorrorEventTrigger(_param.HorrorEventId);
         }
 
         //호러 이벤트가 끝났을 때, 처리
