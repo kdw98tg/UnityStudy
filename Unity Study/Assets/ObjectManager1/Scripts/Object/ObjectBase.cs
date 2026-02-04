@@ -14,9 +14,11 @@ namespace ObjectManager1
         {
 
         }
+
         public int GetId()
         {
             return id;
         }
     }
+
 }

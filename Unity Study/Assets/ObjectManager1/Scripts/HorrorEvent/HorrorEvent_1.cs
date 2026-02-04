@@ -51,5 +51,10 @@ namespace ObjectManager1
                 Debug.Log("호러 이벤트 종료");
             }
         }
+
+        private void TurnOffLight(ObjectBase _obj)
+        {
+
+        }
     }
 }
