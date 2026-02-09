@@ -16,7 +16,6 @@ namespace ObjectManager1
             foreach (TriggerBase trigger in triggerBaseArray)
             {
                 trigger.Init();
-                trigger.gameObject.SetActive(false);
             }
 
             triggerDictionary = triggerBaseArray.ToDictionary(trigger => trigger.GetId(), trigger => trigger);

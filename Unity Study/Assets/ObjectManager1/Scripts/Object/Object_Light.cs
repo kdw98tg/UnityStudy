@@ -14,7 +14,11 @@ namespace ObjectManager1
         {
             base.DoAction(_eventBase);
 
-            Debug.Log("불꺼짐!");
+            EventData_SetLightIntensity data = new()
+            {
+                Intensity = 0f,
+            };
+            _eventBase.Execute(this, data);
         }
     }
 }

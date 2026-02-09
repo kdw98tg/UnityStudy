@@ -36,25 +36,24 @@ namespace ObjectManager1
             }
 
             objectDictionary = objectBaseArray.ToDictionary(obj => obj.GetId(), obj => obj);
+
+            InitCommands();
         }
 
         public void DoAction(DoActionParam _param)
         {
             //EventId를 통해서 Event 가져오는 로직
-
+            EventBase eventBase = EventManager.GetEvent(_param.EventId);
 
             if (objectDictionary.ContainsKey((int)_param.ObjectId))
             {
-                // objectDictionary[(int)_param.ObjectId].DoAction(_param.EventId);
+                objectDictionary[(int)_param.ObjectId].DoAction(eventBase);
             }
         }
 
-        public void ExecuteEvent(int _eventId, int _targetObjectId)
+        private void InitCommands()
         {
-            if (objectDictionary.ContainsKey(_targetObjectId))
-            {
-                // eventManager?.ExecuteEvent(_eventId, objectDictionary[_targetObjectId]);
-            }
+            CommandInvoker<DoActionParam>.Add(new Command_DoAction(DoAction));
         }
     }
 }

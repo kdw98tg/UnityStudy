@@ -4,5 +4,6 @@ namespace ObjectManager1
     {
         None,
         Event_MoveWithTransform,
+        Event_LightOff,
     }
 }
