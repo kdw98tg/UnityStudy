@@ -4,5 +4,6 @@ namespace ObjectManager1
     {
         public ObjectId ObjectId { get; set; }
         public EventId EventId { get; set; }
+        public EventDataBase EventData { get; set; }
     }
 }

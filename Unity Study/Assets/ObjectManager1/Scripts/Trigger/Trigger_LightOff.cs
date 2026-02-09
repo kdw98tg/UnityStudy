@@ -14,7 +14,7 @@ namespace ObjectManager1
                 CommandInvoker<DoActionParam>.Execute(new DoActionParam()
                 {
                     ObjectId = ObjectId.Object_Light,
-                    EventId = EventId.Event_LightOff,
+                    EventId = EventId.Event_SetLightIntensity,
                 });
             };
         }

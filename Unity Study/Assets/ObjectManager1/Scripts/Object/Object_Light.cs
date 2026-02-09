@@ -10,15 +10,11 @@ namespace ObjectManager1
             id = (int)ObjectId.Object_Light;
         }
 
-        public override void DoAction(EventBase _eventBase)
+        public override void DoAction(EventBase _eventBase, EventDataBase _data)
         {
-            base.DoAction(_eventBase);
+            base.DoAction(_eventBase, _data);
 
-            EventData_SetLightIntensity data = new()
-            {
-                Intensity = 0f,
-            };
-            _eventBase.Execute(this, data);
+            _eventBase.Execute(this, _data);
         }
     }
 }

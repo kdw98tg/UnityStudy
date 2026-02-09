@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using System;
 
+
 namespace ObjectManager1
 {
     public class ObjectBase : MonoBehaviour
@@ -20,7 +21,7 @@ namespace ObjectManager1
             activeCoroutines = new Dictionary<EventId, Coroutine>();
         }
 
-        public virtual void DoAction(EventBase _eventBase)
+        public virtual void DoAction(EventBase _eventBase, EventDataBase _data)
         {
 
         }

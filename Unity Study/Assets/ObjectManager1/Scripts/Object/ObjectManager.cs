@@ -47,7 +47,7 @@ namespace ObjectManager1
 
             if (objectDictionary.ContainsKey((int)_param.ObjectId))
             {
-                objectDictionary[(int)_param.ObjectId].DoAction(eventBase);
+                objectDictionary[(int)_param.ObjectId].DoAction(eventBase, _param.EventData);
             }
         }
 

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace ObjectManager1
@@ -11,10 +10,9 @@ namespace ObjectManager1
             id = (int)ObjectId.Object_LightSwitch;
         }
 
-        public override void DoAction(EventBase _eventBase)
+        public override void DoAction(EventBase _eventBase, EventDataBase _data)
         {
-            base.DoAction(_eventBase);
-            Debug.Log("스위치 상호작용!");
+            base.DoAction(_eventBase, _data);
         }
     }
 }
