@@ -10,9 +10,9 @@ namespace ObjectManager1
             id = (int)ObjectId.Object_Light;
         }
 
-        public override void DoAction()
+        public override void DoAction(EventBase _eventBase)
         {
-            base.DoAction();
+            base.DoAction(_eventBase);
 
             Debug.Log("불꺼짐!");
         }

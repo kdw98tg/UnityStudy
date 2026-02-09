@@ -11,9 +11,9 @@ namespace ObjectManager1
             id = (int)ObjectId.Object_LightSwitch;
         }
 
-        public override void DoAction()
+        public override void DoAction(EventBase _eventBase)
         {
-            base.DoAction();
+            base.DoAction(_eventBase);
             Debug.Log("스위치 상호작용!");
         }
     }

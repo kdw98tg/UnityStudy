@@ -14,16 +14,17 @@ namespace ObjectManager1
             id = (int)ObjectId.HorrorEvent_1;
 
             //스위치 이벤트 실행
-            eventQueue.Enqueue(new EventObject()
-            {
-                ObjectId = (int)ObjectId.Object_LightSwitch,
-            });
+            // eventQueue.Enqueue(new EventObject()
+            // {
+            //     ObjectId = (int)ObjectId.Object_LightSwitch,
+            // });
 
-            //불이 꺼지는 이벤트 실행
-            eventQueue.Enqueue(new EventObject()
-            {
-                ObjectId = (int)ObjectId.Object_Light
-            });
+            // //불이 꺼지는 이벤트 실행 (Event_MoveForward 예시 사용)
+            // eventQueue.Enqueue(new EventObject()
+            // {
+            //     ObjectId = (int)ObjectId.Object_Light,
+            //     // EventId = (int)ObjectId.Event_MoveForward
+            // });
         }
 
         //실제로는 트리거나 특정 이벤트가 될 것임
@@ -39,12 +40,42 @@ namespace ObjectManager1
             }
         }
 
+        private void ClickSwitch()
+        {
+            //커맨드 한개 들어감
+            //CommandInvoker.Execute
+            //({
+            // ObjectId = 1,
+            // EventId = 2,
+            //})
+        }
+
+        private void LightOff()
+        {
+            //커맨드 한개 들어감
+            //CommandInvoker.Execute({
+            // ObjectId = 2,
+            // EventId = 3,
+            //})
+        }
+
         private void DoNext()
         {
             if (eventQueue.Count > 0)
             {
                 var eventObject = eventQueue.Dequeue();
-                ObjectManager.GetObjectById((ObjectId)eventObject.ObjectId).DoAction();
+
+                if (eventObject.EventId != (int)ObjectId.None)
+                {
+                    CommandInvoker<ExecuteEventParam>.Execute(new ExecuteEventParam()
+                    {
+
+                    });
+                }
+                else
+                {
+                    // ObjectManager.GetObjectById((ObjectId)eventObject.ObjectId).DoAction();
+                }
             }
             else
             {
@@ -52,9 +83,5 @@ namespace ObjectManager1
             }
         }
 
-        private void TurnOffLight(ObjectBase _obj)
-        {
-
-        }
     }
 }

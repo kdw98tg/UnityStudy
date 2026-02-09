@@ -18,6 +18,7 @@ namespace ObjectManager1
     public class EventObject
     {
         public int ObjectId { get; set; }
+        public int EventId { get; set; }
         public Action OnEventEndCallback { get; set; }
     }
 }

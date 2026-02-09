@@ -7,6 +7,7 @@ namespace ObjectManager1
     public class HorrorEventManager : MonoBehaviour
     {
         private Dictionary<int, HorrorEventBase> horrorEventDictionary = null;
+        
         private void Awake()
         {
             horrorEventDictionary = new Dictionary<int, HorrorEventBase>();

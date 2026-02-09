@@ -33,65 +33,23 @@ namespace ObjectManager1
     // 이 문들을 오브젝트 매니저가 관리하는 오브젝트 객체로 변환하기 위해서는 DoorBase가 ObjectBase를 상속받아야 합니다.
     // 외부에서 시키는 일이 있으면 ObjectManager를 통해 해당 이벤트를 수행하고 그렇지 않고 플레이어와 상호작용을 수행할때는 SwingDoor나 SlideDoor에 구현되어있는 기능을 수행하도록 하는 것이 맞는 것 같습니다.
     // 이게 강사님이 말씀하신 오브젝트 매니저가 관리하는 오브젝트의 개념과 부합하는지 궁금합니다.
-    //door라고 따로 만들 필요가 없느거임
+    // door라고 따로 만들 필요가 없느거임
 
     public class GameManager : MonoBehaviour
     {
         private ObjectManager objectManager = null;
+        private EventManager eventManager = null;
 
         private void Awake()
         {
             objectManager = GetComponentInChildren<ObjectManager>();
+            eventManager = GetComponentInChildren<EventManager>();
         }
 
         private void Start()
         {
+            eventManager.Init();
             objectManager.Init();
-        }
-    }
-
-    //재준이형이 만든 예제
-    public class ObjectBaseManager
-    {
-        public static ObjectBaseTemp GetObjectById(int _objectId)
-        {
-            // 찾아서 반환
-            return null;
-        }
-
-        public void DoActionWithId(int _objectId, Action<ObjectBaseTemp> _onEventCallback)
-        {
-            GetObjectById(_objectId).DoAction(_onEventCallback);
-        }
-    }
-
-
-    public abstract class ObjectBaseTemp : MonoBehaviour
-    {
-        public int ObjectId { get; protected set; }
-        public void DoAction(Action<ObjectBaseTemp> callback)
-        {
-            callback?.Invoke(this);
-        }
-    }
-
-    public class DoorBase : ObjectBase
-    {
-        // 외부 호출
-        public virtual void TriggerOpen() { }
-    }
-
-    public class SwingDoor : DoorBase
-    {
-        protected virtual void Open() { } // 문 열기 기능 수행
-    }
-
-    public class DetailSwingDoor : SwingDoor
-    {
-        // 외부 호출
-        public override void TriggerOpen()
-        {
-            Open(); // 필요시 Open함수 혹은 TriggerOpen함수 override하여 재정의 후 사용
         }
     }
 }
