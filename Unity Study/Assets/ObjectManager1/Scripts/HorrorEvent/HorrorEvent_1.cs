@@ -1,10 +1,25 @@
 using System.Collections;
+
 using UnityEngine;
+
+// 공포게임은 이벤트로서 게임이 돌아가기 때문에 
+// 이런식으로 관리하는게 좋음
+// 근데 mmo prg 같은거는 좀 힘듦
+// 전통적인 oop로 가는게 좋음
 
 namespace ObjectManager1
 {
     public class HorrorEvent_1 : HorrorEventBase
     {
+        //rpg 같은거는 object 를 관리하는게 아니라
+        //하는일이 아니고 이제 객체별로 관리하면됨
+        //questManager, characterManager 등등
+        //component 랑은 개념이 살짝 다른게, 동작 모음이랑 기능 모음이랑 다름
+        //지금은 동작 모음 느낌
+
+        //총쏘는게임은 음악 노트처리
+        //이벤트로 관리할게 많이 없음
+
         public override void Init()
         {
             base.Init();
@@ -25,6 +40,8 @@ namespace ObjectManager1
             StartCoroutine(ExecuteEventSequence());
         }
 
+//이벤트를 관리하는게 
+
         private IEnumerator ExecuteEventSequence()
         {
             // 2. 불이 꺼짐
@@ -35,7 +52,7 @@ namespace ObjectManager1
                 EventData = new EventData_SetLightIntensity { Intensity = 0f }
             });
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);//쉬었다도 이벤트로 만들어줘야 함 -> 그래야 이벤트만으로 관리가 됨
 
             CommandInvoker<DoActionParam>.Execute(new DoActionParam
             {
