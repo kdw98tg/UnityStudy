@@ -6,28 +6,10 @@ namespace ObjectManager1
 {
     public class ObjectManager : MonoBehaviour
     {
-
-        private TriggerManager triggerManager = null;
-        private HorrorEventManager horrorEventManager = null;
-        private EventManager eventManager = null;
         private static Dictionary<int, ObjectBase> objectDictionary = new Dictionary<int, ObjectBase>();
-
-
-        private void Awake()
-        {
-            triggerManager = GetComponentInChildren<TriggerManager>();
-            triggerManager = GetComponentInChildren<TriggerManager>();
-            horrorEventManager = GetComponentInChildren<HorrorEventManager>();
-            eventManager = GetComponentInChildren<EventManager>();
-        }
 
         public void Init()
         {
-            triggerManager?.Init();
-            triggerManager?.Init();
-            horrorEventManager?.Init();
-            eventManager?.Init();
-
             var objectBaseArray = GetComponentsInChildren<ObjectBase>();
 
             foreach (var obj in objectBaseArray)
@@ -37,23 +19,17 @@ namespace ObjectManager1
 
             objectDictionary = objectBaseArray.ToDictionary(obj => obj.GetId(), obj => obj);
 
-            InitCommands();
+
         }
 
-        public void DoAction(DoActionParam _param)
+        public void DoAction(ObjectId _id, EventBase _event, EventDataBase _eventData)
         {
-            //EventId를 통해서 Event 가져오는 로직
-            EventBase eventBase = EventManager.GetEvent(_param.EventId);
-
-            if (objectDictionary.ContainsKey((int)_param.ObjectId))
+            if (objectDictionary.ContainsKey((int)_id))
             {
-                objectDictionary[(int)_param.ObjectId].DoAction(eventBase, _param.EventData);
+                objectDictionary[(int)_id].DoAction(_event, _eventData);
             }
         }
 
-        private void InitCommands()
-        {
-            CommandInvoker<DoActionParam>.Add(new Command_DoAction(DoAction));
-        }
+
     }
 }

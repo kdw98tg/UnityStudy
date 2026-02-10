@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ObjectManager1
@@ -9,6 +10,7 @@ namespace ObjectManager1
             base.Init();
             id = EventId.Event_SetLightIntensity;
         }
+
         public override void Execute(ObjectBase _objectBase, EventDataBase _data)
         {
             SetLightIntensity(_objectBase, _data);
@@ -26,7 +28,7 @@ namespace ObjectManager1
             var lightComponent = _object.GetCachedComponent<Light>();
             lightComponent.intensity = data.Intensity;
 
-            _data.OnEventCompletedCallback?.Invoke();
+            // _data.OnEventCompletedCallback?.Invoke();
         }
     }
 }

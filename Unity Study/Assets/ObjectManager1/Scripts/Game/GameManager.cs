@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 namespace ObjectManager1
 {
@@ -39,17 +40,50 @@ namespace ObjectManager1
     {
         private ObjectManager objectManager = null;
         private EventManager eventManager = null;
+        private TriggerManager tirggerManager = null;
+        private HorrorEventManager horrorEventManager = null;
+        private PlayerManager playerManager = null;
+        private InputManager inputManager = null;
+
 
         private void Awake()
         {
             objectManager = GetComponentInChildren<ObjectManager>();
             eventManager = GetComponentInChildren<EventManager>();
+            tirggerManager = GetComponentInChildren<TriggerManager>();
+            horrorEventManager = GetComponentInChildren<HorrorEventManager>();
+            playerManager = GetComponentInChildren<PlayerManager>();
+            inputManager = GetComponentInChildren<InputManager>();
         }
 
         private void Start()
         {
+            InitCommands();
+
             eventManager.Init();
             objectManager.Init();
+            tirggerManager.Init();
+            horrorEventManager.Init();
+            playerManager.Init();
+            inputManager.Init();
+
+        }
+
+        private void DoAction(DoActionParam _param)
+        {
+            var eventBase = eventManager.GetEvent(_param.EventId);
+            objectManager.DoAction(_param.ObjectId, eventBase, _param.EventData);
+        }
+
+        private void MovePlayer(MovePlayerParam _param)
+        {
+            playerManager.MovePlayer(_param.ObjectId, _param.MoveDirection);
+        }
+
+        private void InitCommands()
+        {
+            CommandInvoker<DoActionParam>.Add(new Command_DoAction(DoAction));
+            CommandInvoker<MovePlayerParam>.Add(new Command_MovePlayer(MovePlayer));
         }
     }
 }

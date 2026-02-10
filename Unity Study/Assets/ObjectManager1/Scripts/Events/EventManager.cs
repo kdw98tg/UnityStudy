@@ -7,7 +7,7 @@ namespace ObjectManager1
 {
     public class EventManager : MonoBehaviour
     {
-        private static Dictionary<int, EventBase> eventBaseDictionary = null;
+        private Dictionary<int, EventBase> eventBaseDictionary = null;
 
         public void Init()
         {
@@ -31,9 +31,7 @@ namespace ObjectManager1
             }
         }
 
-        //temp
-        //생각해보니, 이거는 GameManager로 콜백 올리면 static 없어도 되겠노
-        public static EventBase GetEvent(EventId _id)
+        public EventBase GetEvent(EventId _id)
         {
             EventBase result = null;
 

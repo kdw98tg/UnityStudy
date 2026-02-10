@@ -2,23 +2,63 @@ using UnityEngine;
 
 namespace ObjectManager1
 {
-    public class Player : ObjectBase
+    public class Player : MonoBehaviour
     {
-        public override void Init()
+        private EventBase moveEvent = null;
+        private EventBase raycastEvent = null;
+
+        private EventData_MoveWithTransform moveEventData = null;
+        private EventData_Raycast raycastEventData = null;
+
+        [SerializeField] private float speed = 1f;
+
+
+        private void Awake()
         {
-            base.Init();
-            id = (int)ObjectId.Player;
+            moveEventData = new EventData_MoveWithTransform();
+            raycastEventData = new EventData_Raycast();
+        }
 
-            EventData_MoveWithTransform data = new EventData_MoveWithTransform()
+        public void Init()
+        {
+
+        }
+
+        private void Update()
+        {
+            CheckRayCast();
+        }
+
+        private void CheckRayCast()
+        {
+            raycastEventData.OnRaycastSuccessed = OnRayCastSuccessed;
+            raycastEventData.MaxDistance = 10f;
+            raycastEventData.DrawDebugRay = true;
+
+            CommandInvoker<DoActionParam>.Execute(new DoActionParam
             {
-                MoveForwardKeyInput = KeyCode.W,
-                MoveLeftKeyInput = KeyCode.A,
-                MoveBackKeyInput = KeyCode.S,
-                MoveRightKeyInput = KeyCode.D,
-                MoveSpeed = 1f,
-            };
+                ObjectId = ObjectId.Player,
+                EventId = EventId.Event_Raycast,
+                EventData = raycastEventData
+            });
+        }
 
-            EventManager.GetEvent(EventId.Event_MoveWithTransform).Execute(this, data);
+        private void OnRayCastSuccessed(RaycastHit _hit)
+        {
+            Debug.Log(_hit.transform.name);
+        }
+
+        public void Move(ObjectId objectId, Vector3 moveDirection)
+        {
+            moveEventData.Direction = moveDirection;
+            moveEventData.Speed = speed;
+
+            CommandInvoker<DoActionParam>.Execute(new DoActionParam
+            {
+                ObjectId = objectId,
+                EventId = EventId.Event_MoveWithTransform,
+                EventData = moveEventData,
+            });
         }
     }
 }

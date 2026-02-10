@@ -23,7 +23,7 @@ namespace ObjectManager1
 
         public virtual void DoAction(EventBase _eventBase, EventDataBase _data)
         {
-
+            _eventBase.Execute(this, _data);
         }
 
         public void StartEventCoroutine(EventId _eventId, IEnumerator _routine)
