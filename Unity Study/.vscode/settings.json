@@ -60,12 +60,28 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml",
+        "*.unity": "yaml"
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Unity Study.slnx"
+    "dotnet.defaultSolution": "Unity Study.slnx",
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\Unity Study.sln",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\Unity Study.slnx",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\Assembly-CSharp-Editor.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\Assembly-CSharp.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonChat.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonRealtime.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonUnityNetworking.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonUnityNetworking.Demos.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonUnityNetworking.Editor.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonUnityNetworking.Utilities.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonUnityNetworking.Utilities.Culling.Editor.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PunDemos.DemoHubEditor.csproj",
+        "c:\\Users\\98tg\\Documents\\UnityStudy\\Unity Study\\PunDemos.DemoSlotcarEditor.csproj"
+    ]
 }
