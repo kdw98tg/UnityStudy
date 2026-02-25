@@ -3,7 +3,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviourPunCallbacks
+public class FusionTestGameManager : MonoBehaviourPunCallbacks
 {
     #region Photon Callbacks
 
